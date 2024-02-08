@@ -11,6 +11,7 @@ const maxFreelancer = 13;
 
 const addFreelancerIntervalId = setInterval(addFreelancer, 4000);
 const updatePrices = setInterval(avePrice, 4000)
+
 render(); // We call this function once to render the initial state
 
 /**
@@ -19,13 +20,20 @@ render(); // We call this function once to render the initial state
  */
 function render() {
   // Render the squares
-  const freelancers = document.querySelector("#freelancers");
+
+  const thing = document.querySelector("#freelancers");
   const freelancerElements = freelancers.map((freelancer) => {
     const element = document.createElement("tr");
-    element.classList.add(freelancer.name, freelancer.price, freelancer.occupation);
+    const nameElement = document.createElement("td");
+    nameElement.innerText=freelancer.name;
+    const jobElement = document.createElement("td");
+    jobElement.innerText=(freelancer.occupation);
+    const priceElement = document.createElement("td");
+    priceElement.innerText=(freelancer.price);
+    element.append(nameElement,jobElement,priceElement)
     return element;
   });
-  freelancers.replaceChildren(...freelancerElements);
+  thing.replaceChildren(...freelancerElements);
 }
 
 
@@ -37,9 +45,19 @@ freelancers.push({name, price, occupation})
 if (freelancers.length >= maxFreelancer){
   clearInterval(addFreelancerIntervalId)
 }
+render()
 }
 
 function avePrice(){
-    let averagePrice = freelancers.price / freelancers.length
-    return averagePrice
+  console.log("average price")
+  let sum = 0
+  for (let i = 0; i < freelancers.length; i++){
+    sum += freelancers[i].price
+  }
+    let averagePrice = sum / freelancers.length
+    console.log(averagePrice)
+    // const thing = document.querySelector("#avePrice");
+    // const element = document.createElement("td");
+    // element.innerText=(averagePrice);
+    document.getElementById("avePrice").innerText = averagePrice
 }

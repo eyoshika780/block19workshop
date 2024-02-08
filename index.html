@@ -5,10 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="index.css">
-<script src="test.js"></script>
+<script defer src="test.js"></script>
 </head>
 <body>
   <h1> this is the freelancers</h1>
-  <ul id="freelancers"></ul>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Names</th>
+        <th scope="col">Occupation</th>
+        <th scope="col">Starting Price</th>
+      </tr>
+    </thead>
+    <tbody id="freelancers">
+      <tr>
+        <td id="name"></td>
+        <td id="occupation"></td>
+        <td id="price"></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th scope="row">Average Starting Price</th>
+        <td></td>
+        <td id="avePrice"></td>
+      </tr>
+    </tfoot>
+  </table>
 </body>
 </html>
